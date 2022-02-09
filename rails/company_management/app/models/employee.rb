@@ -3,7 +3,8 @@ class Employee < ApplicationRecord
   #validates :is_working, presence: true
   #validates :is_working, acceptance: {message: 'Must be true'}
   belongs_to :department
-  has_one :accounts
+  has_one :account
+  has_one :account_history, through: :account
   has_many :jobs
   has_many :companies, through: :jobs
 end
