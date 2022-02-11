@@ -1,0 +1,40 @@
+﻿Polymorphic association 
+ A comman table which is associated with more than one table  having reference  or belongs_to with “able text at last”
+
+We have associated polymorphic association with Company,Employee and project(as comman table)
+
+Creating project associated with employee
+
+Cmd: Project.create(:projectable=>Employee.find_by(id:2))
+Output : id: 2,                                                                                      
+ created_at: Fri, 11 Feb 2022 06:12:51.585977000 UTC +00:00,                                 
+ updated_at: Fri, 11 Feb 2022 06:12:51.585977000 UTC +00:00,                                 
+ name: nil,                                                                                  
+ projectable_type: "Employee",                                                               
+ projectable_id: 2> 
+
+Finding project with Employee
+
+ Cmd- Employee.find_by(id:2).project
+output:
+id: 2,                                                                                     
+  created_at: Fri, 11 Feb 2022 06:12:51.585977000 UTC +00:00,                                
+  updated_at: Fri, 11 Feb 2022 06:12:51.585977000 UTC +00:00,                                
+  name: nil,                                                                                 
+  projectable_type: "Employee",                                                              
+  projectable_id: 2>]
+
+Creating project associated with company
+
+Project.create(:projectable=>Company.first)  
+
+Output
+ id: 3,                                                                  
+ created_at: Fri, 11 Feb 2022 06:19:54.569122000 UTC +00:00,             
+ updated_at: Fri, 11 Feb 2022 06:19:54.569122000 UTC +00:00,             
+ name: nil,                                                              
+ projectable_type: "Company",                                            
+ projectable_id: 1> 
+   
+          
+
