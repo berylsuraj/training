@@ -320,6 +320,24 @@ a.each {|t|puts t.total}
 
 
 27) Joining Tables
+	 
+	 Simple Join
+	- Employee.joins(:department)
+	Will join empoyee table and department table.by using loop will find the employee and department relation
+	
+	Mutiple inner joins
+	- Employee.joins(:department,:account)
+	Will join Employee ,departmet,account on basis of employee_id association
+	
+	Conditions on joins
+	
+	Employee.joins(:department).where('department.name'=>"HR").order(name: :desc)
+	
+	
+	
+
+	 
+	 
 
 
 
