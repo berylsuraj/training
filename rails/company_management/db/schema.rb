@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_09_171516) do
+ActiveRecord::Schema.define(version: 2022_02_11_054523) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,15 @@ ActiveRecord::Schema.define(version: 2022_02_09_171516) do
     t.bigint "employee_id"
     t.index ["company_id"], name: "index_jobs_on_company_id"
     t.index ["employee_id"], name: "index_jobs_on_employee_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.string "projectable_type"
+    t.bigint "projectable_id"
+    t.index ["projectable_type", "projectable_id"], name: "index_projects_on_projectable"
   end
 
   add_foreign_key "account_histories", "accounts"
