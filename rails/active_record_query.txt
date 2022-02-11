@@ -201,7 +201,7 @@ Fetching data
 9) each -> memory inefficient if large record of db. Gets all data  from db at once in memory
    Employee.all.each {|emp| puts emp.name}
 
-10) find_each(batch_size:int) -> fetches record in batchesize. Memory efficient  loads record in batch_size into memory
+10) find_each(batch_size:int) -> fetches record in batchesize in ascending order with reference of primary key. Memory efficient  loads record in batch_size into memory
 -> Employee.find_each(batch_size:2){|emp| puts emp.name}
 Suraj                                                                                              
 Raj                                                                                                
@@ -215,7 +215,38 @@ Sumit
 test0                                                           
 test1                                                           
   Employee Load (0.3ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" > $1 ORDER BY "employees"."id" ASC LIMIT $2  [["id", 10], ["LIMIT", 2]]
-Suraj             
+Suraj     
+
+
+11) batch_size(start:int) – loads record in batch but with a start id which will be the primary key also in ascending order
+-> Employee.find_each(start:2){|emp| puts emp.id}
+id
+2                                                                                                                
+3                                                                                                                
+4                                                                                                                
+5                                                                                                                
+8                                                                                                                
+9                                                                                                                
+10                                                                                                               
+11     
+
+12) batch_size(start,finish)-- finish fetches record from the start record to the finish record in ascending order of primary key
+-> Employee.find_each(start:2,finish:5) {|emp| puts emp.id}
+id
+2                                                                                                                          
+3                                                                                                                          
+4                                                                                                                          
+5 
+
+12) find_in_batches-> its takes array of records in batches rather than a record or model
+-> Employee.find_in_batches {|emps| puts emps.each {|emp| puts emp.id}}
+its like[[]]-->arrayof array records
+
+13)  find_in_batches(start,finish)
+-> Employee.find_in_batches(start:1,finish:5) {|emps| puts emps.each {|emp| puts emp.id}}
+
+
+		
 
 
 
