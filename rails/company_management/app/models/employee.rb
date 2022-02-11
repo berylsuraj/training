@@ -7,6 +7,5 @@ class Employee < ApplicationRecord
   has_one :account_history, through: :account
   has_many :jobs
   has_many :companies, through: :jobs
-  has_many :projects
   has_many :projects, as: :projectable
 end
