@@ -196,7 +196,27 @@ id: 1,
   salary: nil,
   is_working: nil>] 
 
-9) 
+Fetching data 
+
+9) each -> memory inefficient if large record of db. Gets all data  from db at once in memory
+   Employee.all.each {|emp| puts emp.name}
+
+10) find_each(batch_size:int) -> fetches record in batchesize. Memory efficient  loads record in batch_size into memory
+-> Employee.find_each(batch_size:2){|emp| puts emp.name}
+Suraj                                                                                              
+Raj                                                                                                
+  Employee Load (0.3ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" > $1 ORDER BY "employees"."id" ASC LIMIT $2  [["id", 2], ["LIMIT", 2]]
+Amit                                                                                               
+Sun                                                                                                
+  Employee Load (0.3ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" > $1 ORDER BY "employees"."id" ASC LIMIT $2  [["id", 4], ["LIMIT", 2]]
+Sunny                                                                                              
+Sumit                                                                                              
+  Employee Load (0.3ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" > $1 ORDER BY "employees"."id" ASC LIMIT $2  [["id", 8], ["LIMIT", 2]]
+test0                                                           
+test1                                                           
+  Employee Load (0.3ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" > $1 ORDER BY "employees"."id" ASC LIMIT $2  [["id", 10], ["LIMIT", 2]]
+Suraj             
+
 
 
 
