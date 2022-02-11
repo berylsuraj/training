@@ -72,7 +72,7 @@ id: 1,
   salary: nil,
   is_working: nil>]
 
-4) first (count, how many records)-> primary key ordered record
+4) first (how many records)-> primary key ordered record
 ->Employee.first(3)
 [#<Employee:0x00007f3224b04110                                  
   id: 1,                                                        
@@ -104,7 +104,7 @@ id: 1,
 
 
 5) order(attribute_name).first(count of records) -->Order by according to attribute
-->Employee.order(:name).first(4)
+->Employee.order(:name).first(4) or Employee.order(name: :desc)
 [#<Employee:0x0000560c17e11d28                                                        
   id: 3,                                                                              
   created_at: Tue, 08 Feb 2022 13:51:49.810024000 UTC +00:00,                         
@@ -286,6 +286,46 @@ CONDITIONS
 
 19) AND Condition—sum of both records condition
      Employee.where(is_working:true).and(Employee.where(name:"Sunny"))
+
+20) ORDERING—order the recording in asc  or desc order
+	Employee.order(name: :asc)
+	 Employee.order(name: :asc).order(age: :desc)
+
+21) SELECT –select only particular field given
+	Employee.select(:id,:name).distinct
+
+22) LIMITS AND OFFSET –limit ==take, offset
+	Employee.limit(3).offset(2) #offset alway start +1
+
+23) GROUP—groups the attribute
+	Employee.group(:is_working).count
+	{"Sunny"=>1, "Raj"=>1, "Suraj"=>3, "test1"=>1, "test0"=>1, "Amit"=>1, "Sumit"=>1}
+
+
+
+24) Having clause
+Employee.select("name,sum(salary) as  salary_tot").group(:name).having("sum(salary)>?",00)[0].salary_tot
+
+a=Employee.select("name,sum(salary) as total").group(:name).having("count(name)>1")
+a.each {|t|puts t.total}
+
+25) Overiding conditions
+
+- unscope – removed some condition which are specified in unscope(:)
+	
+	-Employee.limit(5).offset(2).unscope(:order)
+
+26) NULL relations
+	
+
+
+27) Joining Tables
+
+
+
+
+
+
      
 
 
