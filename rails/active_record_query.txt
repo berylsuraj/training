@@ -246,6 +246,53 @@ its like[[]]-->arrayof array records
 -> Employee.find_in_batches(start:1,finish:5) {|emps| puts emps.each {|emp| puts emp.id}}
 
 
+CONDITIONS
+
+14) String match
+- > Employee.where("name=’Suraj’”)
+
+15) Array Conditions -->the parameter which we pass inside should match outside params
+   Employee.where("name =? AND is_working=?",params[:name],params[:is_working])
+->Employee.where("name LIKE '%Su%' AND is_working=?",true)
+ id: 5,
+  created_at: Tue, 08 Feb 2022 13:55:48.024354000 UTC +00:00,
+  updated_at: Thu, 10 Feb 2022 13:06:49.425965000 UTC +00:00,
+  department_id: 1,
+  name: "Sunny",
+  age: 35,
+  salary: nil,
+  is_working: true>
+
+	:Placeholder condition
+	Employee.where("age>=:age1 AND age<=:age2",{age1:31,age2:35})
+	place holder with values in the form of hash	
+
+16) Hash Condition--> passing conditions in key valu pair
+  	Equality Condition  
+  	 Employee(is_working:true)
+	
+	Range Condition 
+	Employee.where(age: 30..35)
+           Employee.where(created_at:(Time.now.midnight-1.day)..Time.now.midnight)
+
+	Subset Condition	
+	Employee.where(age: [32,31])
+
+17) Not Condition – all record not present in condtion
+	Employee.where.not(age:[30..35])
+
+18) OR Condition—sum of both records condition
+	Employee.where(is_working:true).or(Employee.where(name:"Suraj"))
+
+19) AND Condition—sum of both records condition
+     Employee.where(is_working:true).and(Employee.where(name:"Sunny"))
+     
+
+
+
+
+
+
 		
 
 
