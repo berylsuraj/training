@@ -8,4 +8,6 @@ class Employee < ApplicationRecord
   has_many :jobs
   has_many :companies, through: :jobs
   has_many :projects, as: :projectable
+  scope :working, -> { where("is_working=?",true) }
+  scope :salary_more_than, -> (salary) { where("salary >?",salary)}
 end

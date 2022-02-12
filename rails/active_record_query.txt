@@ -335,6 +335,103 @@ a.each {|t|puts t.total}
 	
 	
 	
+28) Eager Loading Associations
+	#loading records in few queries not n+1 times where n is number of record passed to yield and 1 is the qery to find the result 
+	
+	Methods
+	1)includes
+		#fetches data using IN without looping for n times
+		employees=Employee.includes(:department).limit(10)
+	
+	2)preload
+		##fetches data using IN without looping for n times ut not methods can be implemented in preload
+		
+		
+		
+29) Scopes
+	#creating method for query which are user many time .It is created in model class.Can be used with association also
+	-Employee.working # woking is a method in Employee model class
+	-Department.first.employees.working ---Can be used with association too
+	
+30) Dynamic Finder
+	#find any record using model attributes
+	# Employee.fid_by_name_and_age("Suraj",31)
+	
+31) Enums
+	#its a list of values for the attributes
+	for eg - attendance have status like present , absent, on_leave, on_vacation
+	 enum :attendance, [:present,:absent,:on_leave,:on_vacation]
+	 
+32) Method chaining
+	#selecting attributes from table after joining and condition 
+
+33) Find or build new object
+	
+	1)find_or_create_by- if record not exist it creates it and find it or if exists find the record for the conditions, but should follow the validations too
+	 # Employee.find_or_create_by(name:"SurajDubey",department_id:5)// here department_id is forign key 
+	 
+	 2)find_or_create_by!- shows exception after query
+	 
+	 3)find_or_initialize_by - it donot save the record 
+	 
+
+34)find_by_sql
+	# finding any record by using sql comads
+	 Employee.find_by_sql("Select * from employees where name='Suraj'")
+	 
+	 1)select_all
+	 	# retreives objects for the gien query but not instantiate them.Will return an instance of objects
+	 	Employee.connection.select_all("Select * from employees where name='Suraj'")
+	 	
+	 	 @column_types={},                                                                                                           
+ 		@columns=["id", "created_at", "updated_at", "department_id", "name", "age", "salary", "is_working"],                        
+ 		@hash_rows=nil,                                                                                                             
+ 		@rows=
+ 		 [[1, 2022-02-08 13:13:51.966909 UTC, 2022-02-08 13:24:24.813021 UTC, 1, "Suraj", 31, 20000.0, nil],
+   		[12, 2022-02-11 10:51:05.132047 UTC, 2022-02-11 10:51:05.132047 UTC, 2, "Suraj", 35, nil, nil],
+   		[11, 2022-02-11 07:00:26.097885 UTC, 2022-02-11 11:31:00.109433 UTC, 1, "Suraj", 43, 10000.0, nil]]> 
+   		
+   		#but when conveting it to array it return array of hashses of every record
+   		
+   		Employee.connection.select_all("Select * from employees where name='Suraj'").to_a
+   		[{"id"=>1, "created_at"=>2022-02-08 13:13:51.966909 UTC, "updated_at"=>2022-02-08 13:24:24.813021 UTC, "department_id"=>1, "name"=>"Suraj", "age"=>31, "salary"=>20000.0, "is_working"=>nil},
+ 		{"id"=>12, "created_at"=>2022-02-11 10:51:05.132047 UTC, "updated_at"=>2022-02-11 10:51:05.132047 UTC, "department_id"=>2, "name"=>"Suraj", "age"=>35, "salary"=>nil, "is_working"=>nil},
+ 		{"id"=>11, "created_at"=>2022-02-11 07:00:26.097885 UTC, "updated_at"=>2022-02-11 11:31:00.109433 UTC, "department_id"=>1, "name"=>"Suraj", "age"=>43, "salary"=>10000.0, "is_working"=>nil}] 
+
+
+
+	 2)pluck
+	  # gives you all data in arraylist
+	  Employee.pluck(:id,:name)
+	  
+	  3)ids # return you array of ids
+	    - Employee.ids ->  [1, 5, 3, 8, 9, 10, 12, 11, 2, 13, 14]  
+	    
+	    
+35) Exists 
+	#exists ? return true/false
+	Employee.where(name:"Suraj").exists?
+	
+36)Calculations
+
+	sum() =Employee.sum(:salary)
+	average()-Employee.average(:salary)
+	minimum()->Employee.minimum(:salary)
+	maximum()->Employee.maximum(:salary)
+
+	
+	
+
+
+	    
+	
+	
+	
+	
+	
+	
+	
+	
 
 	 
 	 
