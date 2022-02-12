@@ -24,6 +24,17 @@ b) grater_than_equal_to
 8) presence for maaping check
 9) absence – checks for the absent attributes
 10) uniqueness :
+ 1)On : context for the validation..can be cystum or in buid context such as update, create
+
+
+Strict Validation
+
+Conditional Validation
+	#Validates the condtion on particular method  like login via phone or web
+
+Custom Validation
+
+Custom class which inherits ActiveModel::Validator.Must implement validates method
 
 
 
