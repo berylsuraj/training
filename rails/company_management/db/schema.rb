@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_11_054523) do
+ActiveRecord::Schema.define(version: 2022_02_12_090900) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,8 @@ ActiveRecord::Schema.define(version: 2022_02_11_054523) do
     t.integer "age"
     t.float "salary"
     t.boolean "is_working"
+    t.string "email"
+    t.string "email_confirmation"
     t.index ["department_id"], name: "index_employees_on_department_id"
   end
 
@@ -61,6 +63,15 @@ ActiveRecord::Schema.define(version: 2022_02_11_054523) do
     t.bigint "employee_id"
     t.index ["company_id"], name: "index_jobs_on_company_id"
     t.index ["employee_id"], name: "index_jobs_on_employee_id"
+  end
+
+  create_table "logins", force: :cascade do |t|
+    t.string "username"
+    t.string "password"
+    t.bigint "employee_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["employee_id"], name: "index_logins_on_employee_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -77,4 +88,5 @@ ActiveRecord::Schema.define(version: 2022_02_11_054523) do
   add_foreign_key "employees", "departments"
   add_foreign_key "jobs", "companies"
   add_foreign_key "jobs", "employees"
+  add_foreign_key "logins", "employees"
 end
