@@ -1,0 +1,29 @@
+﻿                                                        Validations
+
+Validation are used when inserting data into database at model site which is best way.Validation can be implemented on databse site,client side or controller side but need  more effort
+
+
+Method that trigger validation
+	create,create!,save,save!,upate,update!
+
+
+Validation Helper
+	
+	1) acceptance – basically for checkboxes or radio buttons
+	2) validates_associated -  its also checks the associated model for the validation
+	3) confirmation : implemented for two fields and check the equality of text written in both 		field
+	### Employee.create!		(name:"dub",department_id:2,email:"tt@g.c",email_confirmation:"tt@g.c",is_working:true)
+
+	4)comparison – compared two attrbutes
+- a) greater_than
+b) grater_than_equal_to
+
+5)format –allows only given format for particular attribute
+6)length – validates the length for the attribute
+7)numericality – always chec for the numeric values for the attrbute
+8) presence for maaping check
+9) absence – checks for the absent attributes
+10) uniqueness :
+
+
+
