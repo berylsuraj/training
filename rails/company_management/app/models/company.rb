@@ -1,5 +1,5 @@
 class Company < ApplicationRecord
-	has_many :jobs
+	has_many :jobs, dependent: :destroy
 	has_many :employees, through: :jobs
   has_many :projects, as: :projectable
   validates :name, presence: {message: "Company name should be present"}
@@ -11,10 +11,11 @@ class Company < ApplicationRecord
     end
   end
 
-  before_destroy :delete_company 
+  after_destroy :delete_company 
 
   def delete_company
-    puts "Cannot delete ths company"
+    puts "Destroyed"
+
   end
 
   after_initialize do |company|
