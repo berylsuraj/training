@@ -1,6 +1,7 @@
 class Login < ApplicationRecord
   belongs_to :employee
   validates :username, presence: {message: "Username cannot be blank "} 
+  before_create :ensure_username_valid
   validates :password, length: { in: 6..20}
   validates :employee, presence: true, uniqueness: {message: "This employee has already registered"}
   validates :username,  uniqueness: {message: -> (object, data) do "This #{object}, #{data} is already taken" end }, on: :create
@@ -16,5 +17,9 @@ class Login < ApplicationRecord
     end
   end
 
-
+  def ensure_username_valid
+    unless username.blank?
+      self.username=username.downcase!
+    end
+  end
 end
