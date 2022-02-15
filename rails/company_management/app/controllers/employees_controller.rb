@@ -5,4 +5,8 @@ class EmployeesController < ApplicationController
     #@employee=Employee.find(1)
   end
 
+  def new
+    
+  end
+
 end
