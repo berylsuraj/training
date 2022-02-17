@@ -1,2 +1,23 @@
-<h1>Department#index</h1>
-<p>Find me in app/views/department/index.html.erb</p>
+<html>
+	<head>
+		<title>Create Department</title>
+		<link href="style.css" rel="stylesheet">
+	</head>
+	<body>
+		<div >
+			<a href="/home/index">Home</a>
+		</div>
+		<form action="/department/create">
+
+			<div>
+				<label for="dname"> Department Name :</label><br>	
+				<input type="text" name="dname" id="name" ><br><br>
+				
+				<input type="submit">
+				
+			</div>
+
+		</form>
+		
+	</body>
+</html>
