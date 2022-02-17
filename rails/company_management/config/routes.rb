@@ -8,7 +8,8 @@ Rails.application.routes.draw do
    root "home#index"
    get '/employee/new', to:'employees#new'
    get '/employee/create', to:'employees#create'
-   get '/employee/:employee_id', to: 'employees#show'
+   get '/employee/all', to:'employees#index'
+   #get '/employee/:employee_id', to: 'employees#show'
    get '/department/new', to: 'department#new'
    get '/department/create', to: 'department#create'
 end

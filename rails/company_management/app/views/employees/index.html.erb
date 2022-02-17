@@ -1,8 +1,6 @@
-<h1>Employee Profile</h1>
+<!-- <h1>Employee Profile</h1>
 <%= render "shared/menu" %>
 <h2>Employee first details</h2>
-
-<%= link_to "Add", new_book_path %>
 
 
 <%#= render partial: "" locals: { employee: @employee } %>
@@ -11,4 +9,54 @@
   Name : <%= employee.name %><br>
   Age : <%= employee.age %><br>
   Salary : <%=employee.salary%><br><br>
-<% end %>
+<% end %> -->
+
+<html>
+	<head>
+		<title>All Employees</title>
+		<link href="style.css" rel="stylesheet">
+	</head>
+	<body>
+		<div >
+			<a href="/home/index">Home</a>
+		</div>
+
+		<div>
+			<table>
+				<th>Name</th>
+				<th>Age</th>
+				<th>Salary</th>
+				<% @employees.each do |employee|%>
+				<tr>
+					<td><%=employee.name %></td>
+					<td><%=employee.age %></td>
+					<td><%=employee.salary %></td>
+				</tr>
+				<% end %>
+			</table>
+			
+		</div>
+		
+		<!-- <form action="/employee/create">
+			<div>
+			<table>
+				
+			</table>
+
+			<div>
+				<label for="ename"> Employee Name :</label><br>	
+				<input type="text" name="ename" id="ename" ><br><br>
+				<label for="age"> Age :</label><br>
+				<input type="text" name="age" id="age" ><br><br>
+				<label for="salary"> Salary :</label><br>
+				<input type="text" name="salary" id="salary" ><br><br>
+				<label for="dept"> Department id :</label><br>
+				<input type="text" name="department_id" id="department_id" ><br><br>
+				<input type="submit">
+				
+			</div>
+
+		</form> -->
+		
+	</body>
+</html>
