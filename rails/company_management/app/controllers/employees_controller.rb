@@ -1,12 +1,18 @@
 class EmployeesController < ApplicationController
   def index
-    #render('show')
-    @employees=Employee.all
-    #@employee=Employee.find(1)
+   
   end
 
   def new
     
+  end
+
+  def create 
+
+  end
+
+  def show
+    @employee = Employee.find(params[:employee_id])
   end
 
 end
