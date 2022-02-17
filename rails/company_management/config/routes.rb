@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'department/index'
   get 'home/index'
   get 'home/show'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -12,4 +11,5 @@ Rails.application.routes.draw do
    #get '/employee/:employee_id', to: 'employees#show'
    get '/department/new', to: 'department#new'
    get '/department/create', to: 'department#create'
+    get '/department/all', to:'department#index'
 end

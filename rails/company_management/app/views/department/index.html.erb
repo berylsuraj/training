@@ -1,0 +1,25 @@
+
+<html>
+	<head>
+		<title>All Departments</title>
+		<link href="styles.css" rel="stylesheet">
+	</head>
+	<body>
+		<div >
+			<a href="/home/index">Home</a>
+		</div>
+
+		<div>
+			<table>
+				<th>Name</th>
+				<% @departments.each do |department|%>
+					<tr>
+						<td><%=department.name %></td>
+					</tr>
+				<% end %>
+			</table>
+			
+		</div>
+		
+	</body>
+</html>

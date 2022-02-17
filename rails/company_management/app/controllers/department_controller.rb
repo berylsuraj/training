@@ -1,8 +1,9 @@
 class DepartmentController < ApplicationController
-  def new
-
-  end
   
+  def index
+    @departments=Department.all
+  end
+
   def create
     @department=Department.new(name:params[:dname])
     if @department.save
