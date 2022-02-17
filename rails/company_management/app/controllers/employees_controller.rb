@@ -3,12 +3,14 @@ class EmployeesController < ApplicationController
    
   end
 
-  def new
-    
-  end
-
   def create 
-
+   #debugger
+    @employee = Employee.new(name:params[:ename],age:params[:age],salary:params[:salary],department_id:params[:department_id])
+    if @employee.save
+      @status="Saved Successfully"
+    else
+      @status="Error"
+    end
   end
 
   def show

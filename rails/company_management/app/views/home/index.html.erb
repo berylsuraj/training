@@ -1,22 +1,30 @@
 
 <html>
-	<head>
+	<head >
+		<title>Company Management	</title>
 		<link href="style.css" rel="stylesheet">
-		<body>
-			<h1 style="color: red;font-size: 40px; text-align: center; font-weight: bold;"> Welcome to the Website</h1>
-			<div>
-				<form action="/employee/create" method="get">
-					<button class="create-employee">Create Employee</button>	
-				</form>
-
-
-				<input class="create-employee" type="submit" value="Create Department" name="create_dept"> <br>
-				<input class="create-employee" type="submit" value="View Employee" name="view_emp"> <br>
-				<input class="create-employee" type="submit" value="View Department" name="view_dept"> 
-
-			</div>
-		</body>
 	</head>
+
+	<body>
+		<h1 style="color: red;font-size: 40px; text-align: center; font-weight: bold;"> Welcome to the Website</h1>
+		<div>
+			<form action="/employee/new" target="_blank" method="get">
+				<button class="create-employee">Create Employee</button>	
+			</form>
+
+			<div class="text-center">
+				<a href="/department/new" class="anchor"> Create Department</a>
+			</div>
+
+			
+
+
+			<!-- <input class="create-employee" type="submit" value="Create Department" name="create_dept"> <br> -->
+			<input class="create-employee" type="submit" value="View Employee" name="view_emp"> <br>
+			<input class="create-employee" type="submit" value="View Department" name="view_dept"> 
+
+		</div>
+	</body>
 
 </html>
 
