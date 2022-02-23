@@ -1,16 +1,22 @@
 <h1> All  Articles </h1>
 
+
 <div>
 	<% if @articles.count ==0 %>
 	  No Article Present
 	<% else %>
 	  <% @articles.each do |article| %>
 	      <%= render article %>
+	  
+	        <%= link_to "Edit", edit_article_path(article) %>
+	        <!-- <%= link_to "Delete", article, method: :delete %> -->
+	        <%= button_to "Destroy this product",article, method: :delete %>
 	  <% end %>
 	<% end %>
 	<br>
 
 	<%= link_to "New Article", '/articles/new' %>
+	
 
 
 
