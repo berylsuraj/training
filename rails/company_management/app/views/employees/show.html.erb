@@ -1,5 +1,12 @@
-This is show page
+<!-- This is show page
 
 <%= @employee.name %>
 <%= @employee.age %>
-<%= @employee.salary %>
+<%= @employee.salary %> -->
+
+<%= form_with model: @employee do |form| %>
+<%= form.text_field :name %>
+<%= form.text_field :department_id %>
+<%= form.submit "Submit" %>
+
+<% end %>

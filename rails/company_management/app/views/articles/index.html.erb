@@ -1,0 +1,17 @@
+<h1> All  Articles </h1>
+
+<div>
+	<% if @articles.count ==0 %>
+	  No Article Present
+	<% else %>
+	  <% @articles.each do |article| %>
+	      <%= render article %>
+	  <% end %>
+	<% end %>
+	<br>
+
+	<%= link_to "New Article", '/articles/new' %>
+
+
+
+</div>

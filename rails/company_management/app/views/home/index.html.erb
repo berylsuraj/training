@@ -1,16 +1,32 @@
-<!Doctype html>
 <html>
-	<head >
-		<title>Company Management	</title>
+  <head >
+  	<title>Company Management	</title>
 		<link href="styles.css" rel="stylesheet">
 	</head>
 
 	<body>
 		<h1 style="color: red;font-size: 40px; text-align: center; font-weight: bold;"> Welcome to the Website</h1>
 		<div>
-			<form action="/employee/new" target="_blank" method="get">
+			<%= form_with url: "/employee/new", method: :get do |form| %>
+			  <%= form.button "Create Employee", class: "create-employee" %>
+		    <% end %>
+
+		    <%= form_with url: "/department/new", method: :get do|form| %>
+		    	<%= form.button "Create Department", class: "create-employee" %>
+		    <% end %>
+
+		    <%=form_with url: "/employee/all", method: :get do |form| %>
+		    	<%=form.button "View Employees", class: "create-employee" %>
+		    <% end %>
+
+		    <%= form_with url: "/department/all", method: :get do |form| %>
+		      <%= form.button "View Departments", class: "create-employee" %>
+		    <% end %>
+			<!-- <form action="/employee/new" target="_blank" method="get">
 				<button class="create-employee">Create Employee</button>	
 			</form>
+
+
 
 			<div class="text-center">
 				<a href="/department/new" class="anchor"> Create Department</a>
@@ -22,10 +38,12 @@
 
 			<div class="text-center">
 				<a href="/department/all" class="anchor"> View Departments</a>
-			</div>
+			</div> -->
 
 
 		</div>
+
+
 	</body>
 
 </html>

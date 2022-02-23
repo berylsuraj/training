@@ -1,0 +1,26 @@
+<%= form_with(model: article) do |form| %>
+
+  <% if article.errors.any? %>
+      <h1><%= article.errors.count %> Error(s)</h1>
+      <% article.errors.each do |error| %>
+        <%= error.full_message %>
+      <% end %>
+  <% end %>
+  <div>
+  	  <%=form.label :name%><br>
+  	  <%=form.text_field :name %>
+  </div>
+
+  <div>
+  	  <%=form.label :quantity %><br>
+  	  <%=form.text_field :quantity %>
+  </div>
+
+  <div>
+  	  <%=form.label :description %><br>
+  	  <%= form.text_area :description %>
+  </div>
+
+    <%= form.submit %>
+
+<% end %>

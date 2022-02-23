@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_12_112734) do
+ActiveRecord::Schema.define(version: 2022_02_23_050135) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,14 @@ ActiveRecord::Schema.define(version: 2022_02_12_112734) do
     t.bigint "employee_id"
     t.string "account_num"
     t.index ["employee_id"], name: "index_accounts_on_employee_id"
+  end
+
+  create_table "articles", force: :cascade do |t|
+    t.string "name"
+    t.integer "quantity"
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "companies", force: :cascade do |t|
@@ -73,6 +81,16 @@ ActiveRecord::Schema.define(version: 2022_02_12_112734) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "login_type"
     t.index ["employee_id"], name: "index_logins_on_employee_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.float "price"
+    t.string "color"
+    t.integer "size"
+    t.datetime "purchased_at", precision: 6
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "projects", force: :cascade do |t|

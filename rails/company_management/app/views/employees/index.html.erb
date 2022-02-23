@@ -1,29 +1,29 @@
 
 <html>
-	<head>
-		<title>All Employees</title>
-		<link href="style.css" rel="stylesheet">
-	</head>
-	<body>
-		<div >
-			<a href="/home/index">Home</a>
-		</div>
+  <head>
+    <title>All Employees</title>
+    <link href="style.css" rel="stylesheet">
+  </head>
+  <body>
+    <div >
+      <a href="/home/index">Home</a>
+    </div>
 
-		<div>
-			<table>
-				<th>Name</th>
-				<th>Age</th>
-				<th>Salary</th>
-				<% @employees.each do |employee|%>
-					<tr>
-						<td><%=employee.name %></td>
-						<td><%=employee.age %></td>
-						<td><%=employee.salary %></td>
-					</tr>
-				<% end %>
-			</table>
-			
-		</div>
-		
-	</body>
+    <div>
+      <table>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Salary</th>
+        <% @employees.each do |employee|%>
+          <tr>
+            <td><%=employee.name %></td>
+            <td><%=employee.age %></td>
+            <td><%=employee.salary %></td>
+          </tr>
+        <% end %>
+      </table>
+      
+    </div>
+    
+  </body>
 </html>
