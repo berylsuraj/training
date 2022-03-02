@@ -1,0 +1,39 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Students</h1>
+
+
+<div class='row'>
+   <div class= 'col-md-6'>
+      <div id="studentsTable">
+        <% if @students.count==0 %>
+        No Student Present
+        <% else %>
+         <% @students.each do |student| %>
+          <%= render student %>
+          <p>
+            <%= link_to "Show this student", student %>
+          </p>
+        <% end %>
+
+        <% end %>
+       
+      </div>
+    </div>
+
+    <div id= "new-student">
+      <%= link_to 'New Student', new_student_path, remote: true %>
+  </div>
+
+  <a href="#" onclick="this.style.backgroundColor='#990000';event.preventDefault();">Paint it red</a>
+  
+ <!--  <div class= 'col-md-6'>
+    <h1>Create Student</h1>
+    <%= render "form", student: @student %>
+  </div> -->
+</div>
+
+
+
+
+

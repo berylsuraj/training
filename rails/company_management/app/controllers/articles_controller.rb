@@ -1,6 +1,10 @@
 class ArticlesController < ApplicationController
    before_action :set_article, only: %i[ show edit update destroy ]
+   skip_before_action :verify_authenticity_token, only: [:destroy]
+
+
   def index
+
     @articles=Article.all
   end
 
@@ -42,12 +46,24 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def destroy
-   # @article=Article.find(params[:id])
-    @article.destroy
+  def search
 
+    @articles=Article.where("name LIKE ?",params[:search].first).order("name ASC")
     respond_to do |format|
-      format.html { redirect_to articles_url, notice: "Product Deleted successfully"}
+      format.js { redirect_to :index }
+    end
+  end
+
+  def destroy
+  
+  
+    @article.destroy
+   
+    respond_to do |format|
+      format.html {render action: "index"}
+      #format.html { render action: 'index',  notice: "Deleted successfully"}
+      format.js
+      
     end
   end
 

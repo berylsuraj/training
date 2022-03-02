@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
- 
+  resources :bands
+  resources :students
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
   resources :products
   resources :articles
   get 'home/index'
@@ -21,5 +24,6 @@ Rails.application.routes.draw do
    # post '/articles', to:'articles#create'
    # get '/articles/:id', to:'articles#show'
    #get '/article/:id/edit', to: 'articles#edit'
+   get '/article/search', to: 'articles#search'
 
 end

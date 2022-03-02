@@ -1,0 +1,20 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Bands</h1>
+
+<div id="bands">
+  <% @bands.each do |band| %>
+    <%= render band %>
+    <p>
+      <%= link_to "Show this band", band %>
+    </p>
+  <% end %>
+</div>
+
+<div id="new-band">
+
+<%= button_to "New band", new_band_path , remote: true%>
+<div data-controller ="hello"></div>
+
+	
+</div>

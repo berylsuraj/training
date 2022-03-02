@@ -1,4 +1,10 @@
 <h1> All  Articles </h1>
+<%= notice %>
+<%= form_with url: "article/search" do |form| %>
+  <%= form.label :search, "Search" %>
+  <%= form.text_field :search %>
+  <%= form.submit "Search", class: 'search_article'%>
+<% end %>
 
 
 <div>
@@ -9,12 +15,13 @@
 	      <%= render article %>
 	  
 	        <%= link_to "Edit", edit_article_path(article) %>
-	        <%= button_to "Delete",article, method: :delete %>
+	       <!--  <%= button_to "Delete",article, method: :delete %> -->
+	      
 	  <% end %>
 	<% end %>
 	<br>
 
-	<%= link_to "New Article", '/articles/new' %>
+	<%= link_to "New Article", new_article_path	 %>
 	
 
 

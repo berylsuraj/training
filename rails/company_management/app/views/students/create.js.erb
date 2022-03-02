@@ -1,0 +1,8 @@
+<% if @student.errors.any? %>
+  console.log("I am here")
+  alert('Enter student name');
+<% else %>
+<% debugger %>
+ $("#studentsTable").prepend("<%= escape_javascript render('student', student: @student)%>")
+
+<% end %>
