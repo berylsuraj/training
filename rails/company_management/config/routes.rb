@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
+
   resources :tweets do
     member do
       post :edit
     end
+    collection do
+      post :search
+    end
   end
-
+  root 'tweets#index'
   resources :bands
   resources :students
   require 'sidekiq/web'
@@ -16,7 +20,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-   root "home#index"
+  
    get '/employee/new', to:'employees#new'
    get '/employee/create', to:'employees#create'
    get '/employee/all', to:'employees#index'
