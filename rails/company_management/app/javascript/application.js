@@ -17,3 +17,5 @@ $(document).ready(function(){
 		});
 	});
 });
+import "trix"
+import "@rails/actiontext"

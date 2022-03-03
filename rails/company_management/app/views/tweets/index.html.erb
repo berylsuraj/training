@@ -1,0 +1,21 @@
+<p style="color: green" id="notice"><%= notice %></p>
+
+<h1>Tweets
+<span id="tweet_count"> 
+	<%= @tweets.count %>
+</span>
+</h1>
+
+<div id= "new_tweet">
+	<%= render partial: "tweets/form", locals: { tweet: Tweet.new } %>
+</div>
+
+
+
+<div id="tweets">
+  <% @tweets.each do |tweet| %>
+    <%= render tweet %>
+  <% end %>
+</div>
+
+<%= link_to "New tweet", new_tweet_path %>

@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :tweets do
+    member do
+      post :edit
+    end
+  end
+
   resources :bands
   resources :students
   require 'sidekiq/web'

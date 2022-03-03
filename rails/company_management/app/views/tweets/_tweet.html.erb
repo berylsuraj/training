@@ -1,0 +1,9 @@
+<div id="<%= dom_id tweet %>">
+  <p>
+    <strong>Body:</strong>
+    <%= tweet.body %>
+  </p>
+  <%= link_to "Show this tweet", tweet %><br>	
+  <%= button_to "Edit this tweet", edit_tweet_path(tweet), method: :post %> 
+  <%= button_to "Destroy this tweet", tweet_path(tweet), method: :delete %>
+</div>

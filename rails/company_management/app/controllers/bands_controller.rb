@@ -4,7 +4,7 @@ class BandsController < ApplicationController
   # GET /bands or /bands.json
   def index
     @bands = Band.all
-    HardWorkerJob.perform_async(5)
+
   end
 
   # GET /bands/1 or /bands/1.json
@@ -23,6 +23,7 @@ class BandsController < ApplicationController
   # POST /bands or /bands.json
   def create
     @band = Band.new(band_params)
+    
 
     respond_to do |format|
       if @band.save

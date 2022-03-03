@@ -23,13 +23,12 @@ class StudentsController < ApplicationController
   # POST /students or /students.json
   def create
     @student = Student.new(student_params)
-
+    HardWorkerJob.perform_async(student_params)
     respond_to do |format|
       if @student.save
-        debugger
-        #format.html { redirect_to @student, notice: "Student was successfully created." }
-        #format.json { render :show, status: :created, location: @student }
-         format.js
+        format.html { redirect_to @student, notice: "Student was successfully created." }
+        format.json { render :show, status: :created, location: @student }
+         #format.js
         
       else
         
