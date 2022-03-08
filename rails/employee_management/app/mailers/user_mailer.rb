@@ -4,7 +4,7 @@ class UserMailer < ApplicationMailer
   def welcome_email()
     @user = params[:user]
     id=@user.id
-    @url = "https://localhost:3000/verify/#{@user.id}"
+    @url = "http://localhost:3000/verify/#{@user.id}"
     mail(to: @user.email, subject: 'Welcome to Tweets')
   end
 end

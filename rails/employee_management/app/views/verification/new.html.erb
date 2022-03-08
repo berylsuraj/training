@@ -1,0 +1,24 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Verification</h1>
+
+<div class="align-right">
+	
+</div>
+
+
+<%= form_with url: '/verify' do |form| %>
+  
+
+  <div>
+    <%= form.label :code, style: "display: block" %>
+    <%= form.text_field	 :code %>
+  </div>
+
+
+
+  <div>
+    <%= form.submit "Verify" %>
+  </div>
+<% end %>
+
