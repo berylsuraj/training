@@ -24,6 +24,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     respond_to do |format|
       if @user.save
+         #SignupJob.perform_later()
+
+        UserMailer.with(user: @user).welcome_email.deliver_now
         format.html { redirect_to sign_in_path, notice: "User was successfully created." }
         format.json { render :show, status: :created, location: @user }
       else
@@ -64,6 +67,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-     params.require(:user).permit(:name, :password, :confirm_password, :email, :address, :gender, :terms )
+     params.require(:user).permit(:name, :password, :password_confirmation, :email, :address, :gender, :terms )
     end
 end
