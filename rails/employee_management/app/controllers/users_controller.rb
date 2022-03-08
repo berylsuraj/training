@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         SignupJob.perform_later @user
-        format.html { redirect_to sign_in_path, notice: "User was successfully created." }
+        format.html { redirect_to sign_in_path, notice: "Verification mail has been sent to you email." }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new, status: :unprocessable_entity }

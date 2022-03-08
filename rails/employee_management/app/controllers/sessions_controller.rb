@@ -6,15 +6,16 @@ def new
   end
 
   def create
-
     user=User.find_by(email: params[:email])
-    if user.present? && (user.password == params[:password])
-      session[:user_id]=user.id
-      redirect_to '/tweets', notice: "Logged In successfully"
+    if user.present? && (user.password == params[:password] )
+      if user.code.blank?
+        session[:user_id]=user.id
+        redirect_to '/tweets', notice: "Logged In successfully"
+      else
+         flash.alert = "Please verify your email"
+      end
     else
       flash.alert = "Invalid email or password"
-      
-
     end
   end
 

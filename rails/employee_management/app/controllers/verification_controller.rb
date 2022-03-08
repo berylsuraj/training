@@ -5,21 +5,19 @@ class VerificationController < ApplicationController
   end
 
   def create
-      code=params[:code]
-       debugger
-       @user=User.find(session[:user_id])
-       user_code=User.find(session[:user_id]).code
+    code=params[:code]
+    @user=User.find(session[:user_id])
+     user_code=User.find(session[:user_id]).code
     if user_code==code
-       @user.code=""
-       @user.save
-       session[:user_id]=nil
-        respond_to do |format|
-          format.html { redirect_to sign_in_path, notice: "User verified successfully." }
-          format.json { render :show, status: :created, location: @user }
-        end
-    else
-    flash.alert = "Invalid Code"
-    end
+     @user.update_attribute('code',"")
+     session[:user_id]=nil
+      respond_to do |format|
+        format.html { redirect_to sign_in_path, notice: "User verified successfully." }
+        format.json { render :show, status: :created, location: @user }
+      end
+   else
+     flash.alert = "Invalid Code"
+   end
   end
     
 end
