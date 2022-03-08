@@ -1,0 +1,28 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Login</h1>
+
+<div class="align-right">
+	
+	<%= link_to "SignUp", new_user_path %>
+
+</div>
+
+
+<%= form_with url: sign_in_path do |form| %>
+  
+
+  <div>
+    <%= form.label :email, style: "display: block" %>
+    <%= form.text_field	 :email %>
+  </div>
+
+  <div>
+    <%= form.label :password, style: "display: block" %>
+    <%= form.text_field :password %>
+  </div>
+
+  <div>
+    <%= form.submit "Sign In" %>
+  </div>
+<% end %>
