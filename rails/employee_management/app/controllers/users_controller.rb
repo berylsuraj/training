@@ -24,9 +24,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     respond_to do |format|
       if @user.save
-         #SignupJob.perform_later()
-
-        UserMailer.with(user: @user).welcome_email.deliver_now
+        SignupJob.perform_later @user
         format.html { redirect_to sign_in_path, notice: "User was successfully created." }
         format.json { render :show, status: :created, location: @user }
       else
