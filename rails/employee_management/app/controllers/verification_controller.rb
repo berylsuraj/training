@@ -11,7 +11,7 @@ class VerificationController < ApplicationController
   end
 
   def create
-    @user=User.find(params[:id])
+    @user = User.find(params[:id])
     if @user.code == params[:code]
       @user.update_attribute('code',"")
       session[:user_id] = nil

@@ -7,8 +7,8 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user=User.find_by(email: params[:email])
-    if user.present? && (user.password == params[:password] )
+    user = User.find_by(email: params[:email])
+    if user.present? && ( user.password == params[:password] )
       if user.code.blank?
         session[:user_id] = user.id
         redirect_to '/tweets', notice: "Logged In successfully"
