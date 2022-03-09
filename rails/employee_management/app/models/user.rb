@@ -5,8 +5,11 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :terms, acceptance: true
   validates :gender, presence: true
+  
   before_create :set_code
-  def set_code
-    self.code = rand(100000..999999)
-  end
+  
+  private
+    def set_code
+      self.code = rand(100000..999999)
+    end
 end

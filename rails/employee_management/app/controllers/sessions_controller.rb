@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
-def new
+  
+  def new
     if session[:user_id].present?
       redirect_to '/tweets'
     end
@@ -9,19 +10,21 @@ def new
     user=User.find_by(email: params[:email])
     if user.present? && (user.password == params[:password] )
       if user.code.blank?
-        session[:user_id]=user.id
+        session[:user_id] = user.id
         redirect_to '/tweets', notice: "Logged In successfully"
       else
-         flash.alert = "Please verify your email"
+        redirect_to '/sign_in'
+        flash[:alert] = "Please verify your email"
       end
     else
-      flash.alert = "Invalid email or password"
+      redirect_to '/sign_in'
+      flash[:alert] = "Invalid email or password"
     end
   end
 
   def destroy
     session[:user_id] = nil     
     redirect_to '/sign_in' 
-
   end
+
 end

@@ -1,15 +1,16 @@
 <p style="color: green"><%= notice %></p>
+<p style="color: red"><%= flash[:alert] %></p>
 
 <h1>Login</h1>
 
 <div class="align-right">
 	
-	<%= link_to "SignUp", new_user_path %>
+	<%= link_to "SignUp", '/user' %>
 
 </div>
 
 
-<%= form_with url: sign_in_path do |form| %>
+<%= form_with url: '/sign_in' do |form| %>
   
 
   <div>

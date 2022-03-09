@@ -1,4 +1,6 @@
 <p style="color: green"><%= notice %></p>
+<p style="color: red"><%= flash[:alert] %></p>
+
 
 <h1>Verification</h1>
 
@@ -7,7 +9,7 @@
 </div>
 
 
-<%= form_with url: '/verify' do |form| %>
+<%= form_with url: "/verify/#{@user.id}" do |form| %>
   
 
   <div>
