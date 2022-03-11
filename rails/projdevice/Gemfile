@@ -44,6 +44,12 @@ gem "bootsnap", require: false
 
 gem 'devise', '~> 4.8', '>= 4.8.1'
 
+gem 'omniauth'
+
+gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
+
+gem "omniauth-rails_csrf_protection"
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
