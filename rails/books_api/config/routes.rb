@@ -4,7 +4,7 @@ Rails.application.routes.draw do
       resources :writers do
         resources :books
       end
+      resources :books
     end
   end
-   
 end

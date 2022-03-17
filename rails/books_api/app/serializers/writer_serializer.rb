@@ -1,4 +1,3 @@
 class WriterSerializer < ActiveModel::Serializer
-  attributes :id, :name
-  has_many :books
+  attributes :id, :name, :books
 end
