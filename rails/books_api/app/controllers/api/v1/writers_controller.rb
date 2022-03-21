@@ -1,5 +1,6 @@
 class Api::V1::WritersController < ApiController
   before_action :set_writer, only: [:show, :update, :destroy, :edit]
+  
 
   def index
     writers = Writer.all

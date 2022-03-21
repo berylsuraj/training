@@ -7,4 +7,7 @@ Rails.application.routes.draw do
       resources :books
     end
   end
+
+  resources :users
+  post '/auth/login', to: 'authentication#login'
 end

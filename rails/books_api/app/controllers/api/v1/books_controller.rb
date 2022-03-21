@@ -1,5 +1,6 @@
 class Api::V1::BooksController < ApiController
   #before_action :set_book, only: [:index,:show, :update, :destroy]
+  #before_action :check_headers
 
   def index
     if params[:writer_id].present?
@@ -27,6 +28,12 @@ class Api::V1::BooksController < ApiController
   end
 
   def update
+    @book=Book.find(params[:id])
+    if @book.update(book_params)
+      render json: {status:200, message: 'Books updated successfully'}
+    else
+      render json: {status:422, message: @book.errors.full_messages.last}
+    end
   end
 
   def destroy
@@ -40,4 +47,9 @@ class Api::V1::BooksController < ApiController
   def book_params
     params.permit(:name,:writer_id)
   end
+
+  # def check_headers
+  #  if request.headers["Accept"] = "application/test.vnd.v1" && request.headers["Content-Type"]
+
+  # end
 end
