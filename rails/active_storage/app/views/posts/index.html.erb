@@ -1,0 +1,10 @@
+
+
+<% @posts.each do |post| %>
+  <%=  post.title %><br>
+  <%=  image_tag post.profile_image, width: "100px" %><br>
+
+
+<% end %>
+
+<%= link_to "Create Post", "/post" %>
